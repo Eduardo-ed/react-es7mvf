@@ -4,8 +4,8 @@ import { Lista } from './components/Lista';
 
 export function App() {
   const elementos1 = [
-    { done: false, texto: 'Elemento (Comp 1)' },
-    { done: true, texto: 'Elemento (Comp 2)' },
+    { done: false, texto: 'Elemento (Comp 1)', prioridad: 'alta' },
+    { done: true, texto: 'Elemento (Comp 2)', prioridad: 'media' },
   ];
   const elementos2 = [
     { done: false, texto: 'Elemento (Comp 3)' },
@@ -16,10 +16,10 @@ export function App() {
 
   return (
     <div>
-      <h1>Hola (desde componente)</h1>
-      <Lista titulo="Componente 1" icono=":(" elementos={elementos1} />
-      <Lista titulo="Componente 2" icono=":*" elementos={elementos2} />
-      <Lista titulo="Componente 3" icono=";)" elementos={elementos3} />
+      <h1>Lista de tareas:</h1>
+      <Lista titulo="Tareas de la casa:" icono=":)" elementos={elementos1} />
+      <Lista titulo="Lista de la compra:" icono=":*" elementos={elementos2} />
+      <Lista titulo="ToDo del curso" icono=";)" elementos={elementos3} />
     </div>
   );
 }

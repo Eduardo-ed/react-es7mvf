@@ -1,5 +1,7 @@
 import React from 'react';
 import ComponenteLista from './ComponenteLista';
+
+
 export function Lista(props) {
   const listaComponentes = [];
 
@@ -9,6 +11,7 @@ export function Lista(props) {
         <ComponenteLista
           done={props.elementos[i].done}
           texto={props.elementos[i].texto}
+          prioridad={props.elementos[i].prioridad}
         />
       );
     }
