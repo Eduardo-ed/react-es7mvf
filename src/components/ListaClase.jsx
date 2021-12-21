@@ -1,59 +1,73 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import ComponenteListaClase from './ComponenteListaClase';
 
 class ListaClase extends React.Component {
   constructor(props) {
     super(props);
-    this.ListaInicial = [];
-    this.titulo=props.titulo;
-    this.icono=props.icono;
-    this.elementos=props.elementos;
 
-  }
 
-  crearLista(){
-    if (this.elementos !== undefined) {
-      for (let i = 0; i < this.elementos.length; i++) {
-        this.ListaInicial.push(
+    this.listaInicial = [];
+
+    if (props.elementos !== undefined) {
+      for (let i = 0; i < props.elementos.length; i++) {
+        this.listaInicial.push(
           <ComponenteListaClase
-            done={this.elementos[i].done}
-            texto={this.elementos[i].texto}
-            prioridad={this.elementos[i].prioridad}
+            done={props.elementos[i].done}
+            texto={props.elementos[i].texto}
+            prioridad={props.elementos[i].prioridad}
           />
         );
       }
     }
+
+    this.textoRef = React.createRef();
+    this.prioridadRef = React.createRef();
+
+    this.state = {
+      listaActual: this.listaInicial
+    };
   }
 
-  addElement() {
-    
-    /*
-    const valorTextInput = useRef();
-    const valorPrioridad = useRef();
-
-    const newLista = listaComponentes.concat(
-      <ComponenteListaClase prioridad={valorPrioridad.current.value} texto={valorTextInput.current.value} />
-    );*/
+  nuevaTarea() {
+    this.listaInicial =
+      this.listaInicial.concat(
+        <ComponenteListaClase
+          texto={this.textoRef.current.value}
+          prioridad={this.prioridadRef.current.value}
+        />
+      );
+    this.setState({ listaActual: this.listaInicial });
   }
+
 
   render() {
-    this.crearLista();
+
+    const Selector = React.forwardRef(() => (
+      <select ref={this.prioridadRef} className="Selector">
+        <option value="alta">alta</option>
+        <option value="media">media</option>
+        <option value="baja">baja</option>
+      </select>
+    ));
+
+    const Texto = React.forwardRef(() => (
+      <input ref={this.textoRef} type="text" className="Texto" placeholder="Introduce una tarea" />
+    ));
+
     return (
       <div>
-        {this.titulo} - {this.icono}
-        <ul>
-          {this.ListaInicial}
+        {this.props.titulo} - {this.props.icono}
+        <ul>{this.state.listaActual}
           <li>
-            <input  type="text" placeholder="Introduce una tarea" />
-            <select >
-              <option value="alta">alta</option>
-              <option value="media">media</option>
-              <option value="baja">baja</option>
-            </select>
+            <Texto ref={this.textoRef}></Texto>
+            <Selector ref={this.prioridadRef}></Selector>
+
             <br />
-            <button onClick={this.addElement()}>Añadir</button>
+
+            <button onClick={() => this.nuevaTarea()}>Añadir</button>
 
           </li>
+
         </ul>
       </div>
     );
