@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Lista } from './components/Lista';
 import ListaClase from './components/ListaClase';
+import Header from './components/Header';
 
 export function App() {
   const elementos1 = [
@@ -15,8 +16,16 @@ export function App() {
   ];
   const elementos3 = [{ done: false, texto: 'Elemento (Comp 6)' }];
 
+  const e={texto: `prueba`};
+  const e2={texto: `a`};
+  const e3={texto: `h`};
+
   return (
+    
     <div>
+      <Header elementos = {[e, e2, e3]}/>
+
+
       <h1>Lista de tareas:</h1>
 
       <ListaClase titulo="Tareas de la casa:" icono=":)" elementos={elementos1} />
