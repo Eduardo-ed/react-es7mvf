@@ -13,28 +13,29 @@ class Header extends React.Component {
     };
   }
   changeClicked() {
-    this.setState(clicked = !this.state.clicked);
+    this.setState({ clicked: !this.state.clicked });
   }
 
   render() {
 
     return (
 
+      
       <nav className="header-navbar">
         <div className="navbar-logo">
           <img className="logo-image" src="https://eu01.edcwb.com/buscador/img/centros/logogrande/7348-a9c730d6b2b644f5b9910364ba6af277.jpg" />
           <i className="fas fa-user-graduate"/>
         </div>
         
-        <div>
-          <i className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}/>
+        <div className="menu-icon" onClick={this.changeClicked.bind(this)}>
+          <i className={this.state.clicked ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
 
-        <ul className="navbar-menu">
+        <ul className={this.state.clicked ? 'navbar-menu active' : 'navbar-menu'}>
           {MenuItems.map((item) => {
             return (
               <li key={item.id} className="navbar-link">
-                <Link to={item.path}>{item.title}</Link>
+                <Link to={item.path} className="navbar-link" onClick={this.changeClicked.bind(this)}>{item.title}</Link>
               </li>
             );
           })}
