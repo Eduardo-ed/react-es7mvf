@@ -1,7 +1,7 @@
 import { Home } from '../pag/Home';
 import { ListaTareas } from '../pag/ListaTareas';
 import { Perfil } from '../pag/Perfil';
-import { Coches } from '../pag/Coches';
+import { Tabla } from '../pag/Tabla';
 
 export const MenuItems = [
   {
@@ -24,8 +24,8 @@ export const MenuItems = [
   },
   {
     id: 4,
-    path: '/coches',
-    title: 'Coches',
-    component: Coches,
+    path: '/tabla',
+    title: 'Tabla',
+    component: Tabla,
   },
 ];
