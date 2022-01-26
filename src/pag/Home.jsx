@@ -1,10 +1,8 @@
 import React from 'react';
-import BootstrapTable from '../components/BootstrapTable';
+import Login from '../components/Login';
 
 export function Home() {
   return (
-    <div className="main-site">
-      <h1>Bienvenido!</h1>
-    </div>
+   <Login></Login>
   );
 }
