@@ -12,6 +12,7 @@ class Login extends React.Component {
   }
 
   login() {
+    let e = false;
     let i = 0;
 
     do {
@@ -19,20 +20,23 @@ class Login extends React.Component {
         Usuarios[i].user == this.inputUser.current.value &&
         Usuarios[i].password == this.inputPassword.current.value
       ) {
-        this.setState({
-          user: this.inputUser.current.value,
-          password: this.inputPassword.current.value,
-          existe: true,
-        });
+        e = true;
       } else {
         i += 1;
       }
-    } while (i < Usuarios.length && this.state.existe == false);
+    } while (i < Usuarios.length && e == false);
 
-    if (this.state.existe == false) {
+    if (e == true) {
+      this.setState({
+        user: this.inputUser.current.value,
+        password: this.inputPassword.current.value,
+        existe: true,
+      });
+    } else {
       alert('no existe');
     }
   }
+
   componentDidMount() {
     this.setState({
       user: localStorage.getItem('user'),
@@ -50,6 +54,8 @@ class Login extends React.Component {
       return (
         <div className="main-site">
           <Container>
+            <br />
+            <h1>Inicio de sesion:</h1>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Nombre de usuario o email: </Form.Label>
@@ -81,7 +87,10 @@ class Login extends React.Component {
     } else {
       return (
         <div className="main-site">
-          <h1>Bienvenido!</h1>
+          <Container>
+            <br />
+            <h1>Bienvenido {this.state.user}</h1>
+          </Container>
         </div>
       );
     }

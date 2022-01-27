@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
 
 class Perfil extends React.Component {
   constructor(props) {
@@ -9,7 +8,7 @@ class Perfil extends React.Component {
     this.logout = this.logout.bind(this);
   }
 
-  logout(){
+  logout() {
     localStorage.clear();
   }
 
@@ -20,21 +19,27 @@ class Perfil extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    localStorage.setItem('user', this.state.user);
-    localStorage.setItem('password', this.state.password);
-  }
-
   render() {
-    return (
-      <Container>
-        
+    if (this.state.user != 'null' && this.state.user != 'null') {
+      return (
+        <Container>
+          <br />
+          <h1>Página de perfil</h1>
+          <br />
+
           <Button variant="primary" type="button" onClick={this.logout}>
             Cerrar Sesion
           </Button>
-        
-      </Container>
-    );
+        </Container>
+      );
+    } else {
+      return (
+        <Container>
+          <br />
+          <h1>Inicie Sesion</h1>
+        </Container>
+      );
+    }
   }
 }
 

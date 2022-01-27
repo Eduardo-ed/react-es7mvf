@@ -1,5 +1,7 @@
 import React from 'react';
+import Container from 'react-bootstrap/esm/Container';
 import ListaClase from '../components/ListaClase';
+import { Container } from 'react-bootstrap';
 
 export function ListaTareas() {
   const elementos1 = [
@@ -14,19 +16,22 @@ export function ListaTareas() {
   const elementos3 = [{ done: false, texto: 'Elemento (Comp 6)' }];
 
   return (
-    <div>
-      <h1>Listas de tareas</h1>
-      <ListaClase
-        titulo="Tareas de la casa:"
-        icono=":)"
-        elementos={elementos1}
-      />
-      <ListaClase
-        titulo="Lista de la compra:"
-        icono=":*"
-        elementos={elementos2}
-      />
-      <ListaClase titulo="ToDo del curso" icono=";)" elementos={elementos3} />
+    <div className="main-site">
+      <br/>
+      <Container>
+        <h1>Listas de tareas</h1>
+        <ListaClase
+          titulo="Tareas de la casa:"
+          icono=":)"
+          elementos={elementos1}
+        />
+        <ListaClase
+          titulo="Lista de la compra:"
+          icono=":*"
+          elementos={elementos2}
+        />
+        <ListaClase titulo="ToDo del curso" icono=";)" elementos={elementos3} />
+      </Container>
     </div>
   );
 }
