@@ -5,7 +5,7 @@ import { Usuarios } from '../data/Usuarios';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: '', password: '', existe: false };
+    this.state = { user: '', password: '', id: undefined };
     this.login = this.login.bind(this);
     this.inputUser = React.createRef();
     this.inputPassword = React.createRef();
@@ -30,10 +30,10 @@ class Login extends React.Component {
       this.setState({
         user: this.inputUser.current.value,
         password: this.inputPassword.current.value,
-        existe: true,
+        id: i
       });
     } else {
-      alert('no existe');
+      alert('No existe el usuario o la contreña no es la correcta.');
     }
   }
 
@@ -41,16 +41,36 @@ class Login extends React.Component {
     this.setState({
       user: localStorage.getItem('user'),
       password: localStorage.getItem('password'),
+      id: localStorage.getItem('id')
     });
   }
 
   componentWillUnmount() {
     localStorage.setItem('user', this.state.user);
     localStorage.setItem('password', this.state.password);
+    localStorage.setItem('id', this.state.id);
   }
 
   render() {
-    if (this.state.existe == false) {
+    if (
+      this.state.user != null &&
+      this.state.user != 'null' &&
+      this.state.user != '' &&
+      this.state.password != null &&
+      this.state.password != 'null' &&
+      this.state.password != ''
+    ) {
+     
+      return (
+        <div className="main-site">
+          <Container>
+            <br />
+            <h1>Bienvenido {this.state.user}</h1>
+          </Container>
+        </div>
+      );
+    } else {
+      
       return (
         <div className="main-site">
           <Container>
@@ -81,15 +101,6 @@ class Login extends React.Component {
                 Login
               </Button>
             </Form>
-          </Container>
-        </div>
-      );
-    } else {
-      return (
-        <div className="main-site">
-          <Container>
-            <br />
-            <h1>Bienvenido {this.state.user}</h1>
           </Container>
         </div>
       );
