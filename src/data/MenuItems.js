@@ -2,6 +2,8 @@ import { Home } from '../pag/Home';
 import { ListaTareas } from '../pag/ListaTareas';
 import { Perfil } from '../pag/Perfil';
 import { Tabla } from '../pag/Tabla';
+import { PelisGhibli } from '../pag/PelisGhibli';
+import { Animal } from '../pag/Animal';
 
 export const MenuItems = [
   {
@@ -25,7 +27,19 @@ export const MenuItems = [
   {
     id: 4,
     path: '/tabla',
-    title: 'Tabla',
+    title: 'Tabla Notas',
     component: Tabla,
+  },
+  {
+    id: 5,
+    path: '/pelisGhibli',
+    title: 'Studio Ghibli',
+    component: PelisGhibli,
+  },
+  {
+    id: 6,
+    path: '/animal',
+    title: 'Animal',
+    component: Animal,
   },
 ];

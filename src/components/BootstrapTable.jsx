@@ -6,7 +6,7 @@ class BootstrapTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      i: 1
+      i: 0
     };
   }
 
