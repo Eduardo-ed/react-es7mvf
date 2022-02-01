@@ -31,19 +31,23 @@ class AnimalTable extends React.Component {
       <Container>
         <h1>Animal Aleatorio</h1>
         <Row>
-          <Col lg={4} md={6}>
-            <Card style={{ width: '17rem' }}>
+          <Col>
+            <Card style={{ width: '18rem' }}>
               <Card.Img
                 variant="top"
                 src={this.state.selectedItem.image_link}
               />
               <Card.Body>
-                <Card.Title>{this.state.selectedItem.name} </Card.Title>
+                <Card.Title>
+                  {this.state.selectedItem.name}{' '}
+                  {'(' + this.state.selectedItem.latin_name + ')'}{' '}
+                </Card.Title>
                 <Card.Text>
-                  {this.state.selectedItem.latin_name}
                   <p>
-                    Tipo de animal: {this.state.selectedItem.animal_type} 
-                    Habitat: {this.state.selectedItem.habitat}
+                    Tipo de animal: {this.state.selectedItem.animal_type}
+                    <br />
+                    Habitat: {this.state.selectedItem.habitat}.{' '}
+                    {this.state.selectedItem.geo_range}
                   </p>
                 </Card.Text>
               </Card.Body>
@@ -52,7 +56,7 @@ class AnimalTable extends React.Component {
         </Row>
         <br />
         <Row>
-          <Col lg={4} md={6}>
+          <Col>
             <Button variant="primary" type="button" onClick={this.change}>
               Nuevo animal
             </Button>
